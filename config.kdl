@@ -1,0 +1,288 @@
+// Niri gruvbox rice - baseado na config do Hyprland
+// Github: RandomLinuxUser606
+// Reddit: u/Living_Shirt8550
+
+// Spawn programs on startup
+spawn-at-startup "waybar"
+spawn-at-startup "firefox"
+spawn-at-startup "blueman-manager"
+spawn-at-startup "swaybg" "-i" "/home/davihoshi/Downloads/e5a2c5a906f4e5936ec9ac7b89e45316_upscayl_3x_upscayl-standard-4x.jpg" "-m" "fill"
+spawn-at-startup "systemctl" "--user" "start" "hyprpolkitagent"
+spawn-at-startup "systemctl" "start" "--user" "vicinae.service"
+spawn-at-startup "vicinae" "toggle"
+spawn-at-startup "activate-linux"
+
+// Input configuration
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            variant "intl"
+        }
+        
+        repeat-delay 600
+        repeat-rate 25
+    }
+    
+
+
+
+
+    
+
+
+
+
+
+
+}
+
+// Output configuration
+output "DP-3" {
+    mode "1920x1080@74.97"
+    position x=0 y=0
+    scale 1.0
+}
+
+
+
+
+
+// Layout configuration
+layout {
+    background-color "transparent"
+    gaps 10
+    center-focused-column "never"
+    
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+    
+    default-column-width { proportion 0.5; }
+    
+    focus-ring {
+        active-color 106 156 209 230    // Azul claro das luzes da cidade
+        inactive-color 42 47 78 120     // Azul escuro suave
+        width 2
+    } 
+
+    border {
+        active-color 83 138 194 200     // Azul médio das montanhas
+        inactive-color 29 33 54 80      // Azul muito escuro
+        width 2
+    } 
+
+    struts {
+        left 0
+        right 0
+        top 0
+        bottom 0
+    }
+    
+
+    
+        
+
+
+   
+    
+
+
+
+    
+}
+
+// Window rules
+
+window-rule {
+
+    opacity 1.80
+}
+
+window-rule {
+    match app-id="kitty"
+    opacity 1.0
+}
+
+window-rule {
+    match app-id="firefox"
+    opacity 1.0
+}
+
+
+
+
+window-rule {
+    match app-id="firefox" title="Picture-in-Picture"
+    open-floating true
+}
+
+window-rule {
+    match title="screenshot-gui"
+    open-floating true
+}
+
+// Prefer no decoration for floating windows
+prefer-no-csd
+
+// Animations
+animations {
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+    
+    window-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+    
+    window-open {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+    
+    window-close {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+    
+    config-notification-open-close {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+}
+
+// Hotkey daemon (for media keys and other shortcuts)
+// You'll need to use something like swhkd or similar for complex key bindings
+hotkey-overlay {
+    skip-at-startup
+}
+
+// Screenshot path
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+// Environment variables
+environment {
+    XCURSOR_SIZE "24"
+    HYPRCURSOR_SIZE "24"
+}
+
+// Binds - Niri uses a different approach for key bindings
+// You'll need to use an external tool like swhkd for complex bindings
+// Here are some basic built-in bindings:
+
+binds {
+    // Mod is typically Super key
+    Mod+Q { spawn "kitty"; }
+    Mod+C { close-window; }
+    Mod+M { quit; }
+    Mod+E { spawn "nautilus";}
+    Mod+V { toggle-window-floating; }
+    Mod+R { spawn "vicinae" "toggle"; }
+    Mod+B { spawn "firefox"; }
+    
+    // Focus movement
+    Mod+Left { focus-column-left; }
+    Mod+Right { focus-column-right; }
+    Mod+Up { focus-window-up; }
+    Mod+Down { focus-window-down; }
+    
+    // Window movement
+    Mod+Shift+Left { move-column-left; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+Up { move-window-up; }
+    Mod+Shift+Down { move-window-down; }
+    
+    // Window resizing
+    Mod+Ctrl+Left { set-column-width "-10%"; }
+    Mod+Ctrl+Right { set-column-width "+10%"; }
+    Mod+Ctrl+Up { set-window-height "-10%"; }
+    Mod+Ctrl+Down { set-window-height "+10%"; }
+    
+    //Overview
+    Mod+Tab { toggle-overview; }
+    
+    // Workspaces
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+0 { focus-workspace 10; }
+    
+    // Move window to workspace
+    Mod+Shift+1 { move-window-to-workspace 1; }
+    Mod+Shift+2 { move-window-to-workspace 2; }
+    Mod+Shift+3 { move-window-to-workspace 3; }
+    Mod+Shift+4 { move-window-to-workspace 4; }
+    Mod+Shift+5 { move-window-to-workspace 5; }
+    Mod+Shift+6 { move-window-to-workspace 6; }
+    Mod+Shift+7 { move-window-to-workspace 7; }
+    Mod+Shift+8 { move-window-to-workspace 8; }
+    Mod+Shift+9 { move-window-to-workspace 9; }
+    Mod+Shift+0 { move-window-to-workspace 10; }
+    
+    // Screenshots
+    Print { screenshot; }
+    Shift+Print { screenshot-window; }
+    
+    // Media keys (basic support)
+    XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+    XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+    XF86AudioMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    
+    XF86MonBrightnessUp { spawn "brightnessctl" "-e4" "-n2" "set" "5%+"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "-e4" "-n2" "set" "5%-"; }
+    
+    XF86AudioNext { spawn "playerctl" "next"; }
+    XF86AudioPause { spawn "playerctl" "play-pause"; }
+    XF86AudioPlay { spawn "playerctl" "play-pause"; }
+    XF86AudioPrev { spawn "playerctl" "previous"; }
+    
+    // Power menu
+    Mod+T { spawn "rofi" "-show" "p" "-modi" "p:rofi-power-menu"; }
+    
+    // Wallpaper changes
+    Ctrl+1 { spawn "swaybg" "-i" "~/Pictures/Wallpapers/wallpaper2.jpg" "-m" "fill"; }
+    Ctrl+2 { spawn "swaybg" "-i" "~/Pictures/Wallpapers/wallpaper3.jpg" "-m" "fill"; }
+    Ctrl+3 { spawn "swaybg" "-i" "~/Pictures/Wallpapers/wallpaper4.jpg" "-m" "fill"; }
+    Ctrl+4 { spawn "swaybg" "-i" "~/Pictures/Wallpapers/wallpaper5.png" "-m" "fill"; }
+
+    // change windows config-notification-open-close
+    Mod+comma { consume-or-expel-window-left; }
+    Mod+period { consume-or-expel-window-right; }
+}    
+    // Overview
+
+      layer-rule {
+        match namespace="^wallpaper$"
+        place-within-backdrop true
+      }
+
+
+
+
+    
+
+
+
+// Cursor configuration
+cursor {
+    xcursor-theme "default"
+    xcursor-size 24
+}
+
+// Window rules for transparency/opacity
+// Note: Niri handles transparency differently than Hyprland
+// You might need to use compositor-specific settings or applications
+// that support transparency natively
+
+// Debug configuration (disable for production use)
+
+
+
+
+
